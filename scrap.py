@@ -71,14 +71,18 @@ if not os.path.exists(OUTER_DIR):
 OUTPUT_FILE = os.path.join(OUTER_DIR, 'fibank_offices.xlsx')
 df.to_excel(OUTPUT_FILE, index=False)
 
-# print(df) # Uncomment to see the data in CLI
+print(df) # Uncomment to see the data in CLI
 
 def send_email():
-    FROMADDR = FROM_EMAIL
+    '''
+    Send email with the data in attachment.
+    '''
+
+    FROM_ADDR = FROM_EMAIL
     TO_ADDR = TO_EMAIL
 
     msg = MIMEMultipart()
-    msg['From'] = FROMADDR
+    msg['From'] = FROM_ADDR
     msg['To'] = TO_ADDR
     msg['Subject'] = "Fibank Branches"
 
@@ -97,9 +101,9 @@ def send_email():
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(FROMADDR, APP_PASSWORD)
+    server.login(FROM_ADDR, APP_PASSWORD)
     text = msg.as_string()
-    server.sendmail(FROMADDR, TO_ADDR, text)
+    server.sendmail(FROM_ADDR, TO_ADDR, text)
     server.quit()
 
 send_email()
