@@ -20,8 +20,8 @@ This Python script scrapes information about Fibank branches that operate on Sat
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/fibank-branches-scraper.git
-    cd fibank-branches-scraper
+    git clone https://github.com/StanevIvan/webscrapping_fibank.git
+    cd webscrapping_fibank
     ```
 
 2. **Install the required libraries**:
