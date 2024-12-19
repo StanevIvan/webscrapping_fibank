@@ -51,14 +51,14 @@ for office in offices:
     address = address_element.text.strip() if address_element else None
     telephone = telephone_element.text.strip() if telephone_element else None
     
-    
-    data.append({
-        'Име на офис': name,
-            'Адрес': address,
-            'Телефон': telephone,
-            'Раб.време събота': saturday_hours,
-            'Раб.време неделя': sunday_hours
-    })
+    if saturday_hours != None or sunday_hours != None:
+        data.append({
+            'Име на офис': name,
+                'Адрес': address,
+                'Телефон': telephone,
+                'Раб.време събота': saturday_hours,
+                'Раб.време неделя': sunday_hours
+        })
 
 driver.quit()
 
@@ -82,7 +82,7 @@ def send_email():
     msg['To'] = TO_ADDR
     msg['Subject'] = "Fibank Branches"
 
-    body = "Fibank Branches Asignment - DONE"
+    body = "Fibank Branches Asignment - DONE, https://github.com/StanevIvan/webscrapping_fibank"
     msg.attach(MIMEText(body, 'plain'))
 
     FILENAME = 'fibank_offices.xlsx'
